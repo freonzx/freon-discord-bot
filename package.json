@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "discord.js": "11.3.2",
-    "monero": "1.0.6"
+    "monero": "1.0.6",
+    "btc-value": "1.6.2"
   }
 }
