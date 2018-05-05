@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const btcValue = require('btc-value');
 const monero = require('monero');
-
+//const utils = require('./utils.js');
+//Should move this to utils
 Number.prototype.formatMoney = function(c, d, t){
 var n = this,
     c = isNaN(c = Math.abs(c)) ? 2 : c,
@@ -13,16 +14,24 @@ var n = this,
    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
  };
 
-
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log("Bot is ready...");
     bot.user.setStatus('dnd');
     bot.user.setActivity('At your service.');
 })
+
 bot.on("message", function(message) {
+  const member = message.member;
+  const mess = message.content.toLowerCase();
+  const args = message.content.split(' ').slice(1).join(" ");
+  const prefix = "!";
+
+    //Avoid replying to itself or other bots
     if (message.author.equals(bot.user)) return;
-    if (message.content == "!btc") {
+
+    //Bitcoin
+    if (mess.startsWith(prefix + "btc") {
         btcValue().then(value => {
             btcValue.getPercentageChangeLastDay().then(percentage => {
                 var perc = percentage
@@ -37,6 +46,7 @@ bot.on("message", function(message) {
         });
     }
 
+    //Monero Stuff
     if (message.content == "!xmr") {
         monero.price(function(price) {
             message.channel.send(message.author + " O preço do Monero é " + price + " $USD Aproximadamente R$ " + (price * 3.40).formatMoney(2) );
