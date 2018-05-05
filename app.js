@@ -15,11 +15,11 @@ bot.on("message", function(message) {
             btcValue.getPercentageChangeLastDay().then(percentage => {
                 var perc = percentage
                 if (perc > 0) {
-                    message.channel.send(message.author +" O preço do  BTC é " + value + " $ \nSubiu (ultimo dia): " + perc + "% :hugging:");
+                    message.channel.send(message.author +" O preço do  BTC é " + value + " $USD ou R$ " + (value * 3.40).toFixed(2) +"\nSubiu (ultimo dia): " + perc + "% :hugging:");
                 } else if (perc < 0) {
-                    message.channel.send(message.author +" O preço do  BTC é " + value + " $ \nDesceu (ultimo dia): " + perc + "% :sob:");
+                    message.channel.send(message.author +" O preço do  BTC é " + value + " $USD ou R$ " + (value * 3.40).toFixed(2) +"\nDesceu (ultimo dia): " + perc + "% :sob:");
                 } else {
-                    message.channel.send(message.author +" O preço do  BTC é " + value + " $ \nManteve (ultimo dia): " + perc + "% :rolling_eyes:");
+                    message.channel.send(message.author +" O preço do  BTC é " + value + " $USD ou R$ " + (value * 3.40).toFixed(2) +"\nManteve (ultimo dia): " + perc + "% :rolling_eyes:");
                 }
             });
         });
@@ -27,8 +27,9 @@ bot.on("message", function(message) {
 
     if (message.content == "!xmr") {
         monero.price(function(price) {
-            message.channel.send(message.author + " O preço do Monero é " + price + " $USD Aproximadamente R$ " + (price * 3.40));
+            message.channel.send(message.author + " O preço do Monero é " + price + " $USD Aproximadamente R$ " + (price * 3.40).toFixed(2) );
         })
     }
 });
+
 bot.login(process.env.BOT_TOKEN);
