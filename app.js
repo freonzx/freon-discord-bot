@@ -31,7 +31,7 @@ bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
     //Bitcoin
-    if (mess.startsWith(prefix + "btc") {
+    if (mess.startsWith(prefix + "btc")) {
         btcValue().then(value => {
             btcValue.getPercentageChangeLastDay().then(percentage => {
                 var perc = percentage
