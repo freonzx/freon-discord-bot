@@ -7,8 +7,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "discord.js": "11.3.2",
-    "monero": "1.0.6",
-    "btc-value": "1.6.2"
+    "btc-value": "^1.6.2",
+    "currency": "^4.1.0",
+    "currency-formatter": "^1.4.2",
+    "currency.js": "^1.1.4",
+    "discord.js": "^11.3.2",
+    "monero": "^1.0.6"
   }
 }
